@@ -21,6 +21,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v4
       - run: ./gradlew checkstyleMain
