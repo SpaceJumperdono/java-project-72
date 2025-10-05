@@ -31,13 +31,15 @@ tasks.test {
     useJUnitPlatform()
 }
 
-sonar.properties {
-    property("sonar.coverage.exclusions", listOf(
-        "**/java/code/hexlet/*"
-    ))
-    property("sonar.cpd.exclusions", listOf(
-        "**/java/code/hexlet/*"
-    ))
-    property("sonar.projectKey", "SpaceJumperdono_java-project-72")
-    property("sonar.organization", "spacejumperdono")
+sonar {
+    properties {
+        property("sonar.coverage.exclusions", listOf(
+            "**/java/code/hexlet/App.java"
+        ))
+        property("sonar.cpd.exclusions", listOf(
+            "**/java/code/hexlet/App.java"
+        ))
+        property("sonar.projectKey", "SpaceJumperdono_java-project-72")
+        property("sonar.organization", "spacejumperdono")
+    }
 }
