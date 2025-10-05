@@ -32,16 +32,12 @@ tasks.test {
 }
 
 sonar.properties {
-    val coverageExclusions = arrayOf(
+    property("sonar.coverage.exclusions", listOf(
         "**/code/hexlet/App"
-    )
-
-    val cpdExclusions = arrayOf(
+    ))
+    property("sonar.cpd.exclusions", listOf(
         "**/code/hexlet/App"
-    )
-
-    property("sonar.coverage.exclusions", coverageExclusions.joinToString(", "))
-    property("sonar.cpd.exclusions", cpdExclusions.joinToString(", "))
+    ))
     property("sonar.projectKey", "SpaceJumperdono_java-project-72")
     property("sonar.organization", "spacejumperdono")
 }
