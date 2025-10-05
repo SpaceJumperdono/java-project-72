@@ -66,6 +66,6 @@ jobs:
           context: ./app
           file: ./app/Dockerfile
           push: true
-          tags: user/java-project-72:latest
-          cache-from: type=registry,ref=user/java-project-72:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/java-project-72:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/java-project-72:latest
           cache-to: type=inline
