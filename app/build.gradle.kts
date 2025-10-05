@@ -31,9 +31,17 @@ tasks.test {
     useJUnitPlatform()
 }
 
-sonar {
-    properties {
-        property("sonar.projectKey", "SpaceJumperdono_java-project-72")
-        property("sonar.organization", "spacejumperdono")
-    }
+sonar.properties {
+    val coverageExclusions = arrayOf(
+        "**/code/hexlet/App"
+    )
+
+    val cpdExclusions = arrayOf(
+        "**/code/hexlet/App"
+    )
+
+    property("sonar.coverage.exclusions", coverageExclusions.joinToString(", "))
+    property("sonar.cpd.exclusions", cpdExclusions.joinToString(", "))
+    property("sonar.projectKey", "SpaceJumperdono_java-project-72")
+    property("sonar.organization", "spacejumperdono")
 }
