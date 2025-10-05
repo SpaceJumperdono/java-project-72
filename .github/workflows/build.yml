@@ -46,6 +46,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
+
     if: ${{ github.event_name == 'push' }}
 
     steps:
@@ -60,7 +64,6 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
           push: true
           tags: user/java-project-72:latest
           cache-from: type=registry,ref=user/java-project-72:latest
