@@ -61,6 +61,6 @@ jobs:
         with:
           context: .
           push: true
-          cache-from: hexletcomponents/java-javalin-example:latest
+          tags: user/java-project-72:latest
+          cache-from: type=registry,ref=user/java-project-72:latest
           cache-to: type=inline
-          tags: hexletcomponents/java-javalin-example:latest
