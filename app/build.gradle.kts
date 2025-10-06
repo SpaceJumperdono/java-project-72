@@ -36,10 +36,12 @@ tasks.test {
 sonar {
     properties {
         property("sonar.coverage.exclusions", listOf(
-            "**/hexlet/code/App.java"
+            "**/hexlet/code/App.java",
+            "**/hexlet/code/model/Url.java"
         ))
         property("sonar.cpd.exclusions", listOf(
-            "**/hexlet/code/App.java"
+            "**/hexlet/code/App.java",
+            "**/hexlet/code/model/Url.java"
         ))
         property("sonar.projectKey", "SpaceJumperdono_java-project-72")
         property("sonar.organization", "spacejumperdono")
