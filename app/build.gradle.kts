@@ -4,7 +4,7 @@ plugins {
     id("java")
     id("org.sonarqube") version "6.3.1.5724"
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("io.freefair.lombok") version "8.13.1"
+    id("io.freefair.lombok") version "9.0.0"
 }
 
 group = "hexlet.code"
@@ -19,6 +19,8 @@ application {
 }
 
 dependencies {
+    implementation("com.h2database:h2:2.3.232")
+    implementation("com.zaxxer:HikariCP:7.0.2")
     implementation("io.javalin:javalin:6.6.0")
     implementation("io.javalin:javalin-bundle:6.6.0")
     implementation("io.javalin:javalin-rendering:6.6.0")
