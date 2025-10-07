@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.stream.Collectors;
-import org.postgresql.Driver;
 
 @Slf4j
 public class App {
@@ -29,8 +28,13 @@ public class App {
     }
 
     public static Javalin getApp() throws SQLException {
+        var dataBaseUrl = getDatabaseUrl();
+
         var hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(getDatabaseUrl());
+        hikariConfig.setJdbcUrl(dataBaseUrl);
+        if (!dataBaseUrl.equals("jdbc:h2:mem:project")) {
+            hikariConfig.setDriverClassName("org.postgresql.Driver");
+        }
 
         var dataSource = new HikariDataSource(hikariConfig);
         var url = App.class.getClassLoader().getResourceAsStream("schema.sql");
