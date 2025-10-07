@@ -2,6 +2,9 @@ package hexlet.code;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import gg.jte.ContentType;
+import gg.jte.TemplateEngine;
+import gg.jte.resolve.ResourceCodeResolver;
 import hexlet.code.repository.BaseRepository;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.stream.Collectors;
+import io.javalin.rendering.template.JavalinJte;
 
 @Slf4j
 public class App {
@@ -25,6 +29,12 @@ public class App {
 
     private static String getDatabaseUrl() {
         return System.getenv().getOrDefault("JDBC_DATABASE_URL", "jdbc:h2:mem:project");
+    }
+
+    private static TemplateEngine createTemplateEngine() {
+        ClassLoader classLoader = App.class.getClassLoader();
+        ResourceCodeResolver codeResolver = new ResourceCodeResolver("templates", classLoader);
+        return TemplateEngine.create(codeResolver, ContentType.Html);
     }
 
     public static Javalin getApp() throws SQLException {
@@ -49,9 +59,10 @@ public class App {
 
         var app = Javalin.create(config -> {
             config.bundledPlugins.enableDevLogging();
+            config.fileRenderer(new JavalinJte(createTemplateEngine()));
         });
 
-        app.get("/", ctx -> ctx.result("Hello World"));
+        app.get("/", ctx -> ctx.render("index.html"));
 
         return app;
     }
