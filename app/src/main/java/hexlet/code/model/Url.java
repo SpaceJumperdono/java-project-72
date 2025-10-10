@@ -11,8 +11,7 @@ public class Url {
     private String name;
     private Timestamp timestamp;
 
-    public Url(String name, Timestamp timestamp) {
+    public Url(String name) {
         this.name = name;
-        this.timestamp = timestamp;
     }
 }

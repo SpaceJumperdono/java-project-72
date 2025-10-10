@@ -5,7 +5,10 @@ import com.zaxxer.hikari.HikariDataSource;
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.ResourceCodeResolver;
+import hexlet.code.controller.RootController;
+import hexlet.code.controller.UrlsController;
 import hexlet.code.repository.BaseRepository;
+import hexlet.code.util.NamedRoutes;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
 import java.io.BufferedReader;
@@ -37,7 +40,7 @@ public class App {
         return TemplateEngine.create(codeResolver, ContentType.Html);
     }
 
-    public static Javalin getApp() throws SQLException {
+    private static void initDatabase() throws SQLException {
         var dataBaseUrl = getDatabaseUrl();
 
         var hikariConfig = new HikariConfig();
@@ -56,14 +59,22 @@ public class App {
             statement.execute(sql);
         }
         BaseRepository.dataSource = dataSource;
+    }
 
+    public static Javalin getApp() throws SQLException {
         var app = Javalin.create(config -> {
             config.bundledPlugins.enableDevLogging();
             config.fileRenderer(new JavalinJte(createTemplateEngine()));
+            config.staticFiles.add("/static");
         });
+        initDatabase();
 
-        app.get("/", ctx -> ctx.render("index.html"));
+        app.get(NamedRoutes.rootPath(), RootController::build);
+        app.post(NamedRoutes.urlsPath(), UrlsController::create);
+        app.get(NamedRoutes.urlsPath(), UrlsController::index);
+        app.get(NamedRoutes.urlPath("{id}"), UrlsController::show);
 
         return app;
     }
+
 }

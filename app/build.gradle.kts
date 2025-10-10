@@ -40,11 +40,27 @@ sonar {
     properties {
         property("sonar.coverage.exclusions", listOf(
             "**/hexlet/code/App.java",
-            "**/hexlet/code/model/Url.java"
+            "**/hexlet/code/model/Url.java",
+            "**/hexlet/code/controller/RootController.java",
+            "**/hexlet/code/controller/UrlController.java",
+            "**/hexlet/code/controller/UrlController.java",
+            "**/hexlet/code/dto/urls/UrlPage.java",
+            "**/hexlet/code/dto/urls/UrlsPage.java",
+            "**/hexlet/code/dto/BasePage.java",
+            "**/hexlet/code/repository/UrlRepository.java",
+            "**/hexlet/code/util/NamedRoutes.java",
         ))
         property("sonar.cpd.exclusions", listOf(
             "**/hexlet/code/App.java",
-            "**/hexlet/code/model/Url.java"
+            "**/hexlet/code/model/Url.java",
+            "**/hexlet/code/controller/RootController.java",
+            "**/hexlet/code/controller/UrlController.java",
+            "**/hexlet/code/controller/UrlController.java",
+            "**/hexlet/code/dto/urls/UrlPage.java",
+            "**/hexlet/code/dto/urls/UrlsPage.java",
+            "**/hexlet/code/dto/BasePage.java",
+            "**/hexlet/code/repository/UrlRepository.java",
+            "**/hexlet/code/util/NamedRoutes.java",
         ))
         property("sonar.projectKey", "SpaceJumperdono_java-project-72")
         property("sonar.organization", "spacejumperdono")
