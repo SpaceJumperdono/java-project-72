@@ -35,7 +35,7 @@ public class UrlsController {
                 ctx.sessionAttribute("flash", "Страница уже существует");
                 ctx.redirect(NamedRoutes.urlsPath());
             }
-        } catch (MalformedURLException | URISyntaxException | IllegalArgumentException|  ValidationException e) {
+        } catch (MalformedURLException | URISyntaxException | IllegalArgumentException | ValidationException e) {
             ctx.sessionAttribute("flash", "Некорректный URL");
             ctx.redirect(NamedRoutes.rootPath());
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class UrlsController {
             var page = new UrlsPage(urls);
             page.setFlash(ctx.consumeSessionAttribute("flash"));
             ctx.render("index.jte", model("page", page));
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             ctx.json(e.getMessage()).status(503);
         }
     }
@@ -61,7 +61,7 @@ public class UrlsController {
                     .orElseThrow(() -> new NotFoundResponse("Url with id = " + id + " not found"));
             var page = new UrlPage(url);
             ctx.render("show.jte", model("page", page));
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             ctx.json(e.getMessage()).status(503);
         }
     }
