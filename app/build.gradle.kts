@@ -42,9 +42,9 @@ tasks.test {
 tasks.jacocoTestReport {
     reports {
         xml.required = true
+        html.required = false
     }
 }
-
 
 sonar {
     properties {
