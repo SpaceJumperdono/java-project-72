@@ -39,6 +39,13 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
+
 sonar {
     properties {
         property("sonar.coverage.exclusions", listOf(
