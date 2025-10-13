@@ -1,6 +1,7 @@
 plugins {
     checkstyle
     application
+    jacoco
     id("java")
     id("org.sonarqube") version "6.3.1.5724"
     id("com.github.johnrengelman.shadow") version "8.1.1"
@@ -28,8 +29,10 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.2")
     compileOnly("org.projectlombok:lombok:1.18.42")
     annotationProcessor("org.projectlombok:lombok:1.18.42")
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.assertj:assertj-core:3.27.3")
+    testImplementation(platform("org.junit:junit-bom:5.12.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.test {
