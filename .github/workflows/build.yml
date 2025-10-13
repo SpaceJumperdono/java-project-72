@@ -25,8 +25,9 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v4
-      - run: ./gradlew checkstyleMain
       - run: ./gradlew test
+      - run: ./gradlew checkstyleMain
+      - run: ./gradlew jacocoTestReport
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
