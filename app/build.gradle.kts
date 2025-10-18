@@ -49,7 +49,6 @@ tasks.jacocoTestReport {
 sonar {
     properties {
         property("sonar.coverage.exclusions", listOf(
-            "**/hexlet/code/App.java",
             "**/hexlet/code/model/Url.java",
             "**/hexlet/code/controller/RootController.java",
             "**/hexlet/code/controller/UrlsController.java",
