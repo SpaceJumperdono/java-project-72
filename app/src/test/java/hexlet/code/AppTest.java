@@ -5,8 +5,6 @@ import io.javalin.Javalin;
 import io.javalin.testtools.JavalinTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 import java.sql.SQLException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

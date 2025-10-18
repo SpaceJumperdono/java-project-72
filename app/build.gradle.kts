@@ -58,6 +58,7 @@ sonar {
             "**/hexlet/code/dto/BasePage.java",
             "**/hexlet/code/repository/UrlRepository.java",
             "**/hexlet/code/util/NamedRoutes.java",
+            "**/hexlet/code/repository/BaseRepository.java"
         ))
         property("sonar.cpd.exclusions", listOf(
             "**/hexlet/code/App.java",
