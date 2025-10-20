@@ -26,4 +26,33 @@ public class AppTest {
             assertThat(response.body().string()).contains("Анализатор страниц");
         });
     }
+
+    @Test
+    public void testUrlsPage() {
+        JavalinTest.test(app, (server, client) -> {
+            var response = client.get("/urls");
+            assertThat(response.code()).isEqualTo(200);
+        });
+    }
+
+    @Test
+    public void testCreateUrl() {
+        JavalinTest.test(app, (server, client) -> {
+            var url = "url=https://www.example.com";
+            var response = client.post("/urls", url);
+            assertThat(response.code()).isEqualTo(200);
+            assertThat(response.body().string()).contains("https://www.example.com");
+        });
+    }
+
+    @Test
+    public void testUrlPage() {
+        JavalinTest.test(app, (server, client) -> {
+            var url = "url=https://www.example.com";
+            client.post("/urls", url);
+            var response = client.get("/urls/1");
+            assertThat(response.code()).isEqualTo(200);
+            assertThat(response.body().string()).contains("Сайт: https://www.example.com");
+        });
+    }
 }
